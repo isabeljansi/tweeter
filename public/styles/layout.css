@@ -5,6 +5,7 @@
  */
 html {
   box-sizing: border-box;
+  margin: auto
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -15,11 +16,28 @@ html {
  */
 
 body {
+  display: block;
+  margin: 50px;
   color: #545149;
   background-color: #f4f1ec;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 24px;
+  margin-top: 30px;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ 
+.container{
+  background-color: #f4f1ec;
+  /* width: 90%; */
+  font-family: 'sans serif';
+}
+
+/* Solid border below tweet input */
+hr.solid {
+  border-top: 3px solid rgb(0, 0, 0);
+}
+
