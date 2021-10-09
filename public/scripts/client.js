@@ -48,7 +48,7 @@ function createTweetElement(tweetData) {
 
        <footer class="tweet-box-footer">
            <section class="time-ago">
-           ${tweetData.created_at}
+            ${timeago.format(new Date(tweetData.created_at))}
             </section> 
 
              <section class="flag-icon">
