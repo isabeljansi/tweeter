@@ -114,5 +114,11 @@ $( document ).ready(function() {
 
   renderTweets(data);
 
+
+  $('#addTweet').submit( function () {
+    console.log("Tweet Button clicked and handler for tweet button is called");
+    event.preventDefault(); //cancel the submit action by calling .preventDefault()
+  });
+
 });
 
