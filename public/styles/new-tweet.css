@@ -1,0 +1,125 @@
+
+/* tweet text area to type new tweet*/
+#tweet-text{
+  width: 100%
+}
+
+/* tweet button */
+.tweet-button {
+  background-color: #4056A1;
+  font-family: 'Bungee', 'Sans-serif';
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button {
+  background-color: #4056A1;
+  font-family: 'Bungee';
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 24px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* tweet button and counter */
+.parent-block{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+
+/* counter */
+.counter{
+  font-size: 30px;
+  font-family: 'Bungee';
+}
+
+/* posted tweets display */
+.tweet-data{
+  display: block; 
+  border-style: solid;
+  font-size: 24px;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+/* cast shadow when hover over the tweet box */
+.tweet-data:hover{
+  box-shadow: 5px 10px #888888;
+}
+
+.article-header{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+/* avatar displayed beside tweet */
+.tweet-profile-pic{
+  height: 50px;
+  width: 50px;
+  float: left;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+
+/* line separating the tweet content and the tweet icons */
+.solid{
+  width: 100%
+}
+
+
+/* the username displayed in the tweet */
+.username{
+  font-family: 'Sans-serif';
+  float: left;
+  margin-left: 20px;
+  font-family: 'Source Sans Pro';
+}
+
+/* the tweet id display in the tweet */
+.tweetID{
+  float: right;
+  margin-right: 30px;
+  font-family: 'Source Sans Pro';
+  color: rgb(163, 161, 161)
+}
+
+/* the time ago, flag, retweet and heart icons below the tweet */
+.tweet-box-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+/* shows the time ago that the tweet was posted */
+.time-ago{
+align-items: flex-start;
+}
+
+/* the flag icon in the tweet */
+.flag-icon{
+  align-items: flex-end;
+}
+
+.flag-icon:hover{
+  color: orange;
+}
+
+/* the retweet icon in the tweet */
+.retweet-icon:hover{
+  color: #163dbd;
+}
+
+/* the heart icon in the tweet */
+.heart-icon:hover{
+  color: red;
+}
