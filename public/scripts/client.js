@@ -107,18 +107,41 @@ function createTweetElement(tweetData) {
 
 // A $( document ).ready() block.
 $( document ).ready(function() {
-  // const $tweet = createTweetElement(tweetData);
-  // // Test / driver code (temporary)
-  // console.log($tweet); // to see what it looks like
-  // $('.tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
-  renderTweets(data);
-
-
-  $('#addTweet').submit( function () {
+  $('#addTweet').submit( function (event) {
     console.log("Tweet Button clicked and handler for tweet button is called");
     event.preventDefault(); //cancel the submit action by calling .preventDefault()
+
+    /** jQuery .serialize() function turns a set of form data into a query string. 
+     * This serialized data should be sent to the server 
+     * in the data field of the AJAX POST request
+     */
+    let tweetText = $(this).serialize() 
+    console.log(tweetText);
+
+    $.ajax({
+      type: "POST",
+      url: '/tweets',
+      data: tweetText,
+      }).done(function(response){ 
+        console.log("Tweets are reloading", response);
+      loadTweets();
+      })
   });
 
+  function loadTweets () {
+    $.ajax({
+      type: 'GET',
+      url: "/tweets",
+      dataType: 'JSON'
+    })
+    .done( data => {  
+      console.log(data);
+        renderTweets(data)
+    })
+  }
+
+
 });
+
 
