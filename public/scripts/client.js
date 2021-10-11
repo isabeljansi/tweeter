@@ -5,31 +5,19 @@
  */
 
 
-// Fake data taken from initial-tweets.json
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
+const loadTweets = function loadTweets () {
+  $.ajax({
+    type: 'GET',
+    url: "/tweets",
+    dataType: 'JSON'
+  })
+  .done(function(data) {
+    console.log("Sucess: rendering tweets");
+    renderTweets(data);
+  })
+}
+
+// loadTweets();
 
 const renderTweets = function(tweets) {
 // loops through tweets
@@ -39,24 +27,12 @@ const renderTweets = function(tweets) {
     // Test / driver code (temporary)
     console.log($newtweet); // to see what it looks like
     // takes return value and appends it to the tweets container
-    $('.tweets-container').append($newtweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
+    $('.tweets-container').prepend($newtweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
   }
 }
 
 
-//   // Test / driver code (temporary). Eventually will get this from the server.
-// const tweetData = {
-//   "user": {
-//     "name": "Newton",
-//     "avatars": "https://i.imgur.com/73hZDYK.png",
-//       "handle": "@SirIsaac"
-//     },
-//   "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//   "created_at": 1461116232227
-// }
+
 
 /** 
  * function takes a tweet object and is responsible for returning 
@@ -108,40 +84,46 @@ function createTweetElement(tweetData) {
 // A $( document ).ready() block.
 $( document ).ready(function() {
 
+  
+
+  // to check if textarea is empty and no white space 
+  
+
   $('#addTweet').submit( function (event) {
     console.log("Tweet Button clicked and handler for tweet button is called");
     event.preventDefault(); //cancel the submit action by calling .preventDefault()
 
+ 
+    if ($(".textArea").val().length > 140) {
+      return alert("Please shorten your message to 140 characters.");
+     }
+
+    if (!$.trim($(".textArea").val())) {
+      alert("Please enter your message.");
+     }
+     
+     
     /** jQuery .serialize() function turns a set of form data into a query string. 
      * This serialized data should be sent to the server 
      * in the data field of the AJAX POST request
      */
-    let tweetText = $(this).serialize() 
+    let tweetText = $(this).serialize();
+    
     console.log(tweetText);
 
     $.ajax({
       type: "POST",
       url: '/tweets',
       data: tweetText,
-      }).done(function(response){ 
-        console.log("Tweets are reloading", response);
-      loadTweets();
-      })
+      success:function(data){
+        console.log("Success: loadTweets() called to display tweets");
+        // $('.textArea').reset();
+        loadTweets(data);
+      }
+    })
+
   });
-
-  function loadTweets () {
-    $.ajax({
-      type: 'GET',
-      url: "/tweets",
-      dataType: 'JSON'
-    })
-    .done( data => {  
-      console.log(data);
-        renderTweets(data)
-    })
-  }
-
-
+  
 });
 
 
