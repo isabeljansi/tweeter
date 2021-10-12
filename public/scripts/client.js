@@ -31,6 +31,12 @@ const renderTweets = function(tweets) {
   }
 }
 
+//Preventng cross-site scripting with an escape function
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 
 
@@ -50,7 +56,7 @@ function createTweetElement(tweetData) {
       </section>
               
       <section class="tweet-content">
-        <p>${tweetData.content.text} </p>
+        <p>${escape(tweetData.content.text)} </p>
       </section>
 
       <div>
@@ -92,14 +98,13 @@ $( document ).ready(function() {
   $('#addTweet').submit( function (event) {
     console.log("Tweet Button clicked and handler for tweet button is called");
     event.preventDefault(); //cancel the submit action by calling .preventDefault()
-
- 
+    
     if ($(".textArea").val().length > 140) {
-      return alert("Please shorten your message to 140 characters.");
+      return $('#error').text('❗️Error: Please shorten your message to 140 characters.');
      }
 
     if (!$.trim($(".textArea").val())) {
-      alert("Please enter your message.");
+      return $('#error').text('❗️Error: Please enter text');
      }
      
      
@@ -117,11 +122,13 @@ $( document ).ready(function() {
       data: tweetText,
       success:function(data){
         console.log("Success: loadTweets() called to display tweets");
-        // $('.textArea').reset();
         loadTweets(data);
-      }
-    })
 
+      }
+      
+    })
+    
+    
   });
   
 });
