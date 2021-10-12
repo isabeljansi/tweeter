@@ -123,3 +123,8 @@ align-items: flex-start;
 .heart-icon:hover{
   color: red;
 }
+
+/* error message format */
+.error{
+color: red
+}
