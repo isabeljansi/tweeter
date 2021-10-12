@@ -86,18 +86,28 @@
       <div><h2>Compose Tweet</h2></div>
       <form id="addTweet" action="/tweets/" method = "POST">
         <!-- <label for="tweet-text"><b>What are you humming about?</b></label> -->
+        
         <textarea class="textArea" name="text" id="tweet-text" rows="4" cols="100" placeholder="What are you humming about?"></textarea>
-
-        <div>
+      
+    
           <hr class="solid">
-        </div>
+
 
        <div class="parent-block">
         <div> <button class="button" type = "submit">Tweet</button> </div>
+
+        <div class="error">
+          <h4><p id="error"></p></h4>
+        </div>
           <div>
             <output name="counter" class="counter" for="tweet-text" >140</output>
         </div>
       </div>
+
+      <div class="error">
+        <h4><p id="error"></p></h4>
+      </div>
+
       </form>
     </section>
 
