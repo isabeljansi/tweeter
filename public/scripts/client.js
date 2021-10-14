@@ -51,23 +51,28 @@ function createTweetElement(tweetData) {
    const markup = `
     <article class="tweet-data">
       
-      <section class="article-header">
-        <img class="tweet-profile-pic" src="${tweetData.user.avatars}">
-        <div class="username"><h6>${tweetData.user.name}</h6> </div>
-        <div class="tweetID"><h6>${tweetData.user.handle}</h6></div>
-      </section>
-      <br>
-      <section class="tweet-content"><p>${escape(tweetData.content.text)} </p></section>
+      <div class="tweet-header"> 
+        <div>
+          <img class="tweet-profile-pic" src="${tweetData.user.avatars}">
+          <h6 class="username">${tweetData.user.name}</h6>
+        </div>
+      
+        <h6 class="tweetID">${tweetData.user.handle}</h6>
+      </div>
 
-      <div><hr class="solid"></div>
-      <section>
-      <footer class="tweet-box-footer">
-        <section class="time-ago">${timeago.format(new Date(tweetData.created_at))}</section> 
-        <section class="flag-icon"><i class="fas fa-flag"></i>&nbsp;</section>
-        <section class="retweet-icon"><i class="fas fa-retweet"></i>&nbsp;</section>
-        <section class="heart-icon"><i class="fas fa-heart"></i>&nbsp;</section> 
+      <p class="tweet-content">${escape(tweetData.content.text)}</p>
+
+      <hr class="solid">
+ 
+      <footer class="tweet-footer">
+        <div class="time-ago">${timeago.format(new Date(tweetData.created_at))}</div> 
+        <div class ="tweet-icons">
+          <i class="fas fa-flag"></i>
+          <i class="fas fa-retweet"></i>
+          <i class="fas fa-heart"></i>
+        </div>
       </footer>
-      </section>
+     
     </article>
     `;
   return markup;
@@ -77,7 +82,7 @@ function createTweetElement(tweetData) {
 // A $( document ).ready() block.
 $( document ).ready(function() {
 
-  
+  loadTweets();
 
   // to check if textarea is empty and no white space 
   
@@ -86,13 +91,16 @@ $( document ).ready(function() {
     console.log("Tweet Button clicked and handler for tweet button is called");
     event.preventDefault(); //cancel the submit action by calling .preventDefault()
     
-    if ($(".textArea").val().length > 140) {
-      return $('#error').text('❗️Error: Please shorten your message to 140 characters.');
-     }
-
     if (!$.trim($(".textArea").val())) {
       return $('#error').text('❗️Error: Please enter text');
-     }
+    }
+
+    if ($(".textArea").val().length > 140) {
+      return $('#error').text('❗️Error: Please shorten your message to 140 characters.');
+    }
+
+
+     $('#error').text('');
      
      
     /** jQuery .serialize() function turns a set of form data into a query string. 
@@ -115,7 +123,8 @@ $( document ).ready(function() {
       
     })
     .then(() => {
-      $('.textArea').val('')
+      $('.textArea').val('');
+      $('.counter').val(140);
       loadTweets();
     })
     
