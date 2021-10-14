@@ -5,7 +5,7 @@
  */
 
 
-const loadTweets = function loadTweets () {
+const loadTweets = function () {
   $.ajax({
     type: 'GET',
     url: "/tweets",
@@ -21,6 +21,8 @@ const loadTweets = function loadTweets () {
 
 const renderTweets = function(tweets) {
 // loops through tweets
+
+  $('.tweets-container').empty();
   for(const tweet of tweets){
     // calls createTweetElement for each tweet
     const $newtweet = createTweetElement(tweet);
@@ -120,17 +122,20 @@ $( document ).ready(function() {
       type: "POST",
       url: '/tweets',
       data: tweetText,
-      success:function(data){
-        console.log("Success: loadTweets() called to display tweets");
-        loadTweets(data);
+      // success:function(){
+      //   console.log("Success: loadTweets() called to display tweets");
+      //   loadTweets();
 
-      }
+      // }
       
     })
-    
+    .then(() => {
+      $('.textArea').val('')
+      loadTweets();
+    })
     
   });
-  
+
 });
 
 
