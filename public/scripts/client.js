@@ -50,39 +50,24 @@ function createTweetElement(tweetData) {
 
    const markup = `
     <article class="tweet-data">
-          
+      
       <section class="article-header">
         <img class="tweet-profile-pic" src="${tweetData.user.avatars}">
         <div class="username"><h6>${tweetData.user.name}</h6> </div>
         <div class="tweetID"><h6>${tweetData.user.handle}</h6></div>
       </section>
-              
-      <section class="tweet-content">
-        <p>${escape(tweetData.content.text)} </p>
-      </section>
+      <br>
+      <section class="tweet-content"><p>${escape(tweetData.content.text)} </p></section>
 
-      <div>
-        <hr class="solid">
-      </div>
+      <div><hr class="solid"></div>
 
       <footer class="tweet-box-footer">
-        <section class="time-ago">
-        ${timeago.format(new Date(tweetData.created_at))}
-        </section> 
-
-        <section class="flag-icon">
-          <i class="fas fa-flag"></i>
-        </section> 
-
-        <section class="retweet-icon">
-          <i class="fas fa-retweet"></i>
-        </section> 
-
-        <section class="heart-icon">
-          <i class="fas fa-heart"></i>
-        </section> 
-
+        <section class="time-ago">${timeago.format(new Date(tweetData.created_at))}</section> 
+        <section class="flag-icon"><i class="fas fa-flag"></i>&nbsp;</section>
+        <section class="retweet-icon"><i class="fas fa-retweet"></i>&nbsp;</section>
+        <section class="heart-icon"><i class="fas fa-heart"></i>&nbsp;</section> 
       </footer>
+
     </article>
     `;
   return markup;
