@@ -1,7 +1,19 @@
 
 /* tweet text area to type new tweet*/
 #tweet-text{
-  width: 100%
+  width: 100%;
+  background: transparent;
+  border: none
+
+}
+
+textarea::placeholder {
+  color: black;
+  font-family: sans-serif;
+  font-size: 14pt;
+  font-style: bold;
+  
+  
 }
 
 /* tweet button */
@@ -32,10 +44,12 @@
 
 /* posted tweets display */
 .tweet-data{
-  display: block; 
+  
   border-style: solid;
-  margin-top: 50px;
-  padding: 30px;
+  margin: 1.5em 0;
+  padding: 1em;
+
+ 
 }
 
 /* cast shadow when hover over the tweet box */
@@ -44,17 +58,23 @@
 }
 
 
-.article-header{
-  display: block;
+.tweet-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tweet-header div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* avatar displayed beside tweet */
 .tweet-profile-pic{
-  height: 70px;
-  width: 70px;
-  float: left;
-  /* margin-left: 30px;
-  margin-top: 20px; */
+  height: 50px;
+  width: 50px;
+
 }
 
 /* line separating the tweet content and the tweet icons */
@@ -65,68 +85,50 @@
 
 /* the username displayed in the tweet */
 .username{
-  font-family: 'Sans-serif';
-  font-size: 18pt;
-  float: left;
-  margin-left: 20px;
-  font-family: 'Source Sans Pro';
+  font-size: 16pt;
+ 
+ 
+  font-family: sans-serif;
+
 }
 
 /* the tweet id display in the tweet */
 .tweetID{
-  float: right;
-  margin-right: 30px;
-  font-family: 'Source Sans Pro';
-  font-size: 18pt;
-  color: rgb(163, 161, 161)
+ 
+ 
+  font-family: sans-serif;
+  font-size: 16pt;
+  color: rgb(163, 161, 161);
+
 }
 
 
 /* tweet content display */
 .tweet-content{
-  display: block;
-  padding-top: 5%;
-  font-size: 22px;
+  
+  
+  font-family: sans-serif;
+  font-size: 16px;
   text-align: left;
-  width: fit-content;
+  word-wrap: break-word;
 }
 
 /* the time ago, flag, retweet and heart icons below the tweet */
-.tweet-box-footer{
-  display: block;
-  font-size: 14pt;
+.tweet-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* shows the time ago that the tweet was posted */
 .time-ago{
-  float: left;
+  /* float: left; */
+  font-family: sans-serif;
+  font-size: 10;
 }
 
-/* the flag icon in the tweet */
-.flag-icon{
-  float: right
-}
-
-.flag-icon:hover{
+.tweet-icons i:hover{
   color: orange;
-}
-
-/* the retweet icon in the tweet */
-.retweet-icon{
-  float: right
-}
-
-.retweet-icon:hover{
-  color: #163dbd;
-}
-
-/* the heart icon in the tweet */
-.heart-icon{
-  float: right;
-}
-
-.heart-icon:hover{
-  color: red;
 }
 
 /* error message format */
