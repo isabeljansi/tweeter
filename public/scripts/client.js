@@ -60,14 +60,14 @@ function createTweetElement(tweetData) {
       <section class="tweet-content"><p>${escape(tweetData.content.text)} </p></section>
 
       <div><hr class="solid"></div>
-
+      <section>
       <footer class="tweet-box-footer">
         <section class="time-ago">${timeago.format(new Date(tweetData.created_at))}</section> 
         <section class="flag-icon"><i class="fas fa-flag"></i>&nbsp;</section>
         <section class="retweet-icon"><i class="fas fa-retweet"></i>&nbsp;</section>
         <section class="heart-icon"><i class="fas fa-heart"></i>&nbsp;</section> 
       </footer>
-
+      </section>
     </article>
     `;
   return markup;
