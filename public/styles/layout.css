@@ -73,6 +73,9 @@ body {
 }
 .error{
   float: right;
+  padding-top: 50px;
+  font-family: sans-serif;
+  font-size: large;
 }
 
 /* Solid border below tweet input */
