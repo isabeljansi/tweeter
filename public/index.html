@@ -49,11 +49,9 @@
     <!-- Composer-Char-Counter JS -->
     <script type="text/javascript" src="./scripts/composer-char-counter.js"></script>
 
-
   </head>
 
   <body>
-
 
     <!-- Top nav bar (fixed) -->
     <nav class="title-bar" style="z-index: 100">
@@ -65,55 +63,36 @@
     </nav>
 
     <header style="z-index: -1">
-      <div class="avatar">
-          <img src="./images/profile-hex.png"> 
-      </div>
+      <div class="avatar"> <img src="./images/profile-hex.png"></div>
       <br>
-      <div class="profile-name" style="z-index: 100">
-          <h2><b>Amy</b> Mansell</h2>
-      </div>
-
-
-  </header>
+      <div class="profile-name" style="z-index: 100"><h2><b>Amy</b> Mansell</h2></div>
+    </header>
 
 
     <!-- Page-specific (main) content here -->
-    <main id="container" class="container"></main>
-   <!-- <div class = "humming-about"><b>What are you humming about?</b>  </div> -->
+    <main id="container" class="container">
   
- 
-    <section class="new-tweet">
-      <div><h2>Compose Tweet</h2></div>
-      <form id="addTweet" action="/tweets/" method = "POST">
-        <!-- <label for="tweet-text"><b>What are you humming about?</b></label> -->
+      <section class="new-tweet">
+
+        <div class="compose"><h3>Compose Tweet</h3></div>
+        <div class="error"> <h5><p id="error"></p></h5></div>
         
-        <textarea class="textArea" name="text" id="tweet-text" rows="4" cols="100" placeholder="What are you humming about?"></textarea>
-      
-    
+        <form id="addTweet" action="/tweets" method = "POST">
+          
+          <textarea class="textArea" name="text" id="tweet-text" rows="4" cols="100" placeholder="What are you humming about?"></textarea>
+          
           <hr class="solid">
+            
+          <div class="parent-block">
+            <div> <button class="button" type = "submit">Tweet</button> </div>
+            <div><output name="counter" class="counter" for="tweet-text" >140</output></div>
+          </div>
 
+        </form>
+      </section>
 
-       <div class="parent-block">
-        <div> <button class="button" type = "submit">Tweet</button> </div>
+      <section class="tweets-container"> </section>
 
-        <div class="error">
-          <h4><p id="error"></p></h4>
-        </div>
-          <div>
-            <output name="counter" class="counter" for="tweet-text" >140</output>
-        </div>
-      </div>
-
-      <div class="error">
-        <h4><p id="error"></p></h4>
-      </div>
-
-      </form>
-    </section>
-
-    <section class="tweets-container"> 
-
-    </section>
-
+    </main>
   </body>
 </html>
