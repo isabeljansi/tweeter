@@ -15,7 +15,7 @@ The background-color should be a different colour than the nav and the body
   background-image: url("back-pattern.png");
   background-color: lightcoral;
   margin-top: 150px;
-
+  position: fixed
   
 }
 
